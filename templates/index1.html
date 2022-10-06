@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Detector</title>
+    <link rel='shortcut icon' type='image/x-icon' href='/static/fav.webp' />
+
+    <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+</head>
+
+<body style="margin: 0px;">
+    <div>
+    <div class="container">
+    <h2  style="margin-top: 0px; margin-bottom: 0px;"><span class="heading_font">Covid-19 Detector</span></h2>
+     <h3 class="description"><p>A Deep Learning Web App, Built with Flask, Deployed using Heroku.<br>It helps to diagnose COVID-19 using X-Ray images with the help of Convolutional Neural Network.</p></h3></div>
+        <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+            <br>
+           <br><br><br>
+            <input id="second" name="name" required="required" placeholder="Enter patient's name" style="color: #4d089a;font-family: 'Pacifico', cursive; background-color:white; text-align: center;">
+              <br><br>
+            <input type="file" accept="image/*" name="image" id="second"  onchange="loadFile(event)" required="required" style="color: #0bebf6;font-family: 'Pacifico', cursive; background-color:white;text-align: center; border-color: #4d089a; width:370px;">
+            <br><br>
+            <p><img id="output" width="200"/></p>
+
+<script>
+  var loadFile = function(event) {
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
+
+
+             <br><input id="sub" type="submit" class="my-cta-button" value="Predict">
+            <br>
+
+        </form>
+
+
+
+        <br><h3 class="prediction">{{ prediction_text }}<h3>
+
+    </div>
+        <div class="footer">
+        <div class="contact" style="margin-top:12px">
+               <a target="_blank" href="https://github.com/shreyjain3245" style=" color: white;"><i class="fab fa-github fa-lg contact-icon" aria-hidden="true"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/shreyjain3245/" style="color: white;"><i class="fab fa-linkedin fa-lg contact-icon" aria-hidden="true"></i></a>
+           </div>
+          <p style="margin-bottom:5px;margin-top:5px">Made with ❤️ by Shrey Jain.</p>
+        </div>
+
+
+    <style>
+        body {
+
+            text-align: center;
+            padding: 0px;
+            background-image:url('https://cdn.dribbble.com/users/1166389/screenshots/14126070/media/a1dec6cc35c6ecb57a77dd358d2c7cc9.gif');
+            background-size:100%;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            height:100%;
+            width:100%;
+            max-width: 100%;
+            overflow-x: hidden;
+                font-family: Arial, Helvetica,sans-serif;
+    text-align: center;
+
+        }
+        .my-cta-button {
+    background: #f9f9f9;
+    border: 2px solid #000000;
+    border-radius: 1000px;
+    box-shadow: 3px 3px #8c8c8c;
+    margin-top: 10px;
+    padding: 10px 36px;
+    color: #000000;
+    display: inline-block;
+    font: italic bold 20px/1 "Calibri", sans-serif;
+    text-align: center;
+}
+input[type=file]::file-selector-button {
+  border: 2px solid #4d089a;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: white;
+  color:black;
+  transition: 1s;
+  font-family: 'Pacifico', cursive; font-size: 25px;
+  border-radius: 24px;
+  height: 45px;
+}
+.prediction{
+color: #4d089a;
+font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    background-color:white;
+
+}
+
+.my-cta-button:active {
+    box-shadow: 0 0;
+}
+.my-cta-button:hover {
+    color: #4d089a;
+    border: 2px solid #4d089a;
+}
+
+        .description p {
+    color: #ffffff;
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    margin: -5px 0 0;
+}
+        .heading_font {
+        color: #ffffff;
+        font-family: 'Pacifico', cursive;
+        font-size: 30px;
+        font-weight: normal;
+        }
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:#0bebf6 ;
+  opacity: 1; /* Firefox */
+}
+
+        .container{
+
+            padding: 5px;
+        position: relative;
+        background: linear-gradient(
+            45deg
+         , #0bebf6,#443B96, #15b9f8);
+        background-size: 500% 500%;
+
+
+        }
+ input:focus::placeholder {
+  color: transparent;
+}
+
+
+        html {
+        height:100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #second {
+            border-radius: 24px;
+            height: 45px;
+            font-size: 15px;
+            text-align: center;
+            font-family: 'Pacifico', cursive; font-size: 25px;
+            border-color:#4d089a;
+            border:solid;
+
+        }
+
+        #third {
+            border-radius: 24px;
+            height: 45px;
+            width: 545px;
+            font-size: 20px;
+            text-align: center;
+       color: #4d089a;font-family: 'Pacifico', cursive; font-size: 25px;
+       border-color:#4d089a;
+       border:solid;
+
+
+        }
+        input:focus{
+    outline: none;
+}
+ select:focus{
+    outline: none;
+}
+  .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+   background: linear-gradient(
+            45deg
+         , #0bebf6,#1d0ac5, #15b9f8);
+        background-size: 500% 500%;
+   color: #ffffff;
+        font-family: 'Pacifico', cursive;
+        font-size: 15px;
+        font-weight: normal;
+  text-align: center;
+}
+
+
+    </style>
+</body>
+
+</html>
