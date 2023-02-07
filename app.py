@@ -12,7 +12,7 @@ app = Flask(__name__)
 model = load_model('model_CNN.h5')
 @app.route('/',methods=['GET'])
 def Home():
-    return render_template('index1.html')
+    return render_template('index.html')
 
 
 @app.route("/predict", methods=['POST'])
@@ -39,15 +39,15 @@ def predict():
         try:    
             if p[0][0]==0:
               s=name+" is diagnosed with Covid-19."  
-              return render_template('index1.html',prediction_text=s,image1=img_path);
+              return render_template('index.html',prediction_text=s,image1=img_path);
             elif p[0][0]==1:
               s=name+" is Normal."
-              return render_template('index1.html',prediction_text=s);
+              return render_template('index.html',prediction_text=s);
 
         except:
-             return render_template('index1.html',prediction_text="Upload an X-Ray image")
+             return render_template('index.html',prediction_text="Upload an X-Ray image")
     else:
-        return render_template('index1.html')
+        return render_template('index.html')
 
 if __name__=="__main__":
     app.run(debug=True)
