@@ -5,53 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoviCheck: COVID-19 Detector</title>
-    <link rel='shortcut icon' type='image/x-icon' href='/static/fav.webp' />
+    <link rel='shortcut icon' type='image/x-icon' href='/static/fav.webp'/>
 
     <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
 </head>
 
 <body style="margin: 0px;">
-    <div>
+<div>
     <div class="container">
-    <h2  style="margin-top: 0px; margin-bottom: 0px;"><span class="heading_font">Covid-19 Detector</span></h2>
-     <h3 class="description"><p>A Deep Learning Web App, Built with Flask, Deployed using Github.<br>It helps to diagnose COVID-19 using X-Ray images with the help of Convolutional Neural Network.</p></h3></div>
-        <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
-            <br>
-           <br><br><br>
-            <input id="second" name="name" required="required" placeholder="Enter patient's name" style="color: #4d089a;font-family: 'Pacifico', cursive; background-color:white; text-align: center;">
-              <br><br>
-            <input type="file" accept="image/*" name="image" id="second"  onchange="loadFile(event)" required="required" style="color: #0bebf6;font-family: 'Pacifico', cursive; background-color:white;text-align: center; border-color: #4d089a; width:370px;">
-            <br><br>
-            <p><img id="output" width="200"/></p>
+        <h2 style="margin-top: 0px; margin-bottom: 0px;"><span class="heading_font">CoviCheck: Covid-19 Detector</span>
+        </h2>
+        <h3 class="description"><p>A Deep Learning Web App, Built with Flask, Deployed using Google Cloud.<br>It helps
+            to diagnose COVID-19 using X-Ray images with the help of Convolutional Neural Network.</p></h3>
+    </div>
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+        <br>
+        <br><br><br>
+        <input id="second" name="name" required="required" placeholder="Enter patient's name"
+               style="color: #4d089a;font-family: 'Pacifico', cursive; background-color:white; text-align: center;">
+        <br><br>
+        <input type="file" accept="image/*" name="image" id="second" onchange="loadFile(event)" required="required"
+               style="color: #0bebf6;font-family: 'Pacifico', cursive; background-color:white;text-align: center; border-color: #4d089a; width:370px;">
+        <br><br>
+        <p><img id="output" width="200"/></p>
 
-<script>
+        <script>
   var loadFile = function(event) {
     var image = document.getElementById('output');
     image.src = URL.createObjectURL(event.target.files[0]);
   };
-</script>
+
+        </script>
 
 
-             <br><input id="sub" type="submit" class="my-cta-button" value="Predict">
-            <br>
+        <br><input id="sub" type="submit" class="my-cta-button" value="Predict">
+        <br>
 
-        </form>
+    </form>
 
 
+    <br>
+    <h3 class="prediction">{{ prediction_text }}<h3>
 
-        <br><h3 class="prediction">{{ prediction_text }}<h3>
-
+</div>
+<div class="footer">
+    <div class="contact" style="margin-top:12px">
+        <a target="_blank" href="https://github.com/shreyjain3245" style=" color: white;"><i
+                class="fab fa-github fa-lg contact-icon" aria-hidden="true"></i></a>
+        <a target="_blank" href="https://www.linkedin.com/in/shreyjain3245/" style="color: white;"><i
+                class="fab fa-linkedin fa-lg contact-icon" aria-hidden="true"></i></a>
     </div>
-        <div class="footer">
-        <div class="contact" style="margin-top:12px">
-               <a target="_blank" href="https://github.com/shreyjain3245" style=" color: white;"><i class="fab fa-github fa-lg contact-icon" aria-hidden="true"></i></a>
-               <a target="_blank" href="https://www.linkedin.com/in/shreyjain3245/" style="color: white;"><i class="fab fa-linkedin fa-lg contact-icon" aria-hidden="true"></i></a>
-           </div>
-          <p style="margin-bottom:5px;margin-top:5px">Made with ❤️ by Shrey Jain.</p>
-        </div>
+    <p style="margin-bottom:5px;margin-top:5px">Made with ❤️ by Shrey Jain.</p>
+</div>
 
 
-    <style>
+<style>
         body {
 
             text-align: center;
@@ -202,7 +210,8 @@ font-family: 'Pacifico', cursive;
 }
 
 
-    </style>
+
+</style>
 </body>
 
 </html>
